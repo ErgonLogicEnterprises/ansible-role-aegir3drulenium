@@ -1,24 +1,18 @@
 
 - name: geerlingguy.mysql
   src: http://github.com/geerlingguy/ansible-role-mysql
-  name: geerlingguy.mysql
 
 - name: getvalkyrie.drush
   src: http://github.com/ErgonLogicEnterprises/ansible-role-drush
-  name: getvalkyrie.drush
 
 - name: getvalkyrie.aegir
   src: http://github.com/ErgonLogicEnterprises/ansible-role-aegir
-  name: getvalkyrie.aegir
 
 - name: getvalkyrie.drulenium
   src: http://github.com/ErgonLogicEnterprises/ansible-role-drulenium
-  name: getvalkyrie.drulenium
 
 - name: geerlingguy.java
   src: http://github.com/geerlingguy/ansible-role-java
-  name: geerlingguy.java
 
 - name: getvalkyrie.selenium
   src: http://github.com/ErgonLogicEnterprises/ansible-role-selenium
-  name: getvalkyrie.selenium
