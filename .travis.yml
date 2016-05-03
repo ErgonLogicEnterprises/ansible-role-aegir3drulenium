@@ -43,18 +43,13 @@ before_install:
 
 install:
   # Install Ansible from sources.
-  - curl https://raw.githubusercontent.com/GetValkyrie/ansible-bootstrap/master/install-ansible.sh|sudo /bin/sh
+  - curl https://raw.githubusercontent.com/ErgonLogicEnterprises/ansible-bootstrap/master/install-ansible-ppa.sh |sudo /bin/sh
 
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 
   # Install required dependencies.
-  - ansible-galaxy install http://github.com/geerlingguy/ansible-role-mysql,,geerlingguy.mysql
-  - ansible-galaxy install http://github.com/geerlingguy/ansible-role-java,,geerlingguy.java
-  - ansible-galaxy install http://github.com/ErgonLogicEnterprises/ansible-role-aegir.git,,getvalkyrie.aegir
-  - ansible-galaxy install http://github.com/ErgonLogicEnterprises/ansible-role-drulenium.git,,getvalkyrie.drulenium
-  - ansible-galaxy install http://github.com/ErgonLogicEnterprises/ansible-role-selenium.git,,getvalkyrie.selenium
-  - ansible-galaxy install http://github.com/ErgonLogicEnterprises/ansible-role-drush.git,,getvalkyrie.drush
+  - sudo ansible-galaxy install -r tests/requirements.yml
 
 script:
   # Check the role/playbook's syntax.
