@@ -6,10 +6,8 @@
     # Use default log file size so Travis CI VM allows MySQL restart.
     - mysql_innodb_log_file_size: "5M"
     - aegir_frontend_url: aegir3drulenium.local
-#    - aegir_makefile: aegir.make
-#    - aegir_makefile_contents: "{{ lookup('file', './files/aegir.make') }}"
     - aegir_makefile: aegir.make
-    - aegir_makefile_contents: "{{ lookup('file', 'aegir.make') }}"
+    - aegir_makefile_contents: "{{ lookup('file', '{{ aegir_makefile }}') }}"
   roles:
     - geerlingguy.mysql
     - getvalkyrie.drush
