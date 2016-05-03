@@ -22,6 +22,7 @@ env:
 #  - ANSIBLE_VERSION=1.9 -- why is this broken? Vagrant on Valkyrie wants Ansible 1.9
   - ANSIBLE_VERSION=2.0
   - ANSIBLE_VERSION=2.0.0.1
+  - ANSIBLE_VERSION=2.0.2
 
 #notifications:
 #  slack:
@@ -43,20 +44,20 @@ before_install:
 
 install:
   # Install Ansible from sources.
-  - curl https://raw.githubusercontent.com/ErgonLogicEnterprises/ansible-bootstrap/master/install-ansible-ppa.sh | sudo /bin/sh
+  - "curl https://raw.githubusercontent.com/ErgonLogicEnterprises/ansible-bootstrap/master/install-ansible-ppa.sh | sudo /bin/sh"
 
   # Add ansible.cfg to pick up roles path.
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 
   # Install required dependencies.
-  - sudo ansible-galaxy install -r tests/requirements.yml
+  - "sudo ansible-galaxy install -r tests/requirements.yml"
 
 script:
   # Check the role/playbook's syntax.
-  - "ansible-playbook -i tests/inventory tests/test.yml --syntax-check --sudo"
+  - "sudo ansible-playbook -i tests/inventory tests/test.yml --syntax-check"
 
   # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo"
+  - "sudo ansible-playbook -i tests/inventory tests/test.yml --connection=local"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
