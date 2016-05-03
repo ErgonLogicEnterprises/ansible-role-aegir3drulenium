@@ -43,14 +43,13 @@ before_install:
   - sudo rm -rf /root/.my.cnf
 
 install:
-  # Install Ansible from sources.
+  # Install Ansible from PPA
   - "curl https://raw.githubusercontent.com/ErgonLogicEnterprises/ansible-bootstrap/master/install-ansible-ppa.sh | sudo /bin/sh"
-
   # Add ansible.cfg to pick up roles path.
-  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+  # - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 
   # Install required dependencies.
-  - "sudo ansible-galaxy install -r tests/requirements.yml"
+  - "sudo ansible-galaxy install --force -r tests/requirements.yml"
 
 script:
   # Check the role/playbook's syntax.
